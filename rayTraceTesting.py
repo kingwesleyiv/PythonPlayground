@@ -1,6 +1,5 @@
 import pygame
 import sys
-import time
 import random
 import math as m
 import numpy as n
@@ -26,6 +25,7 @@ circle = {
 # Setting the fraction to a "prime fraction" or a fraction that cannot be reduced will result in a unique star shape.
 # The larger the fraction (closer to 1) the wider the middle of the star becomes.
 ray_dist = 1 - (21 / 101)
+
 # A set of color gradients used for the rays. The list is itterated through each frame.
 gradient = [
     [255,0,0],
@@ -35,11 +35,10 @@ gradient = [
     [0,0,255],
     [255,0,255],
 ]
-color = gradient[0] # Initial ray color
 
+color = gradient[0] # Initial ray color
 start_pos : array = (circle["pos"][0], circle["pos"][1] + circle["radius"]) # Bottom center of the circle.
 last_end_pos : array = start_pos # Initialize the last ending position with the current start.
-
 loop = 1 # The current iterration of the ray loop.
 
 # Set window title
@@ -71,9 +70,6 @@ def raycast():
     # Draw the line.
     pygame.draw.line(screen, tuple(color), last_end_pos, end_pos, 1)
     return end_pos
-
-# Input the Localized coordinates of the point being rotated and the degrees of rotaton. Will rotate around 0,0 counter-clockwise.
-
 
 # Fill the screen with black
 screen.fill((0, 0, 0))
